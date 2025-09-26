@@ -21,9 +21,18 @@ function agregarHobbie(persona, nuevoHobbie) {
     console.log(persona)
 }
 
-function mostrarHobbies() {
+function mostrarHobbies(persona) {
     console.log('en mostrar hobbie')
     console.log(persona)
+    document.writeln(`<h4>Datos Persona</h4>`)
+    document.writeln(`<p>Nombre: ${persona.nombre}</p>`)
+    document.writeln(`<p>Edad: ${persona.edad}</p>`)
+    document.writeln(`<p>Hobbies:</p>`)
+    document.writeln(`<ol>`)
+    for (let i = 0; i < persona.hobbies.length; i++) {
+        document.writeln(`<li>${persona.hobbies[i]}</li>`)
+    }
+    document.writeln(`</ol>`)
 }
 
 
@@ -34,14 +43,14 @@ if ((nombre !== '' && nombre !== null) && !isNaN(edad)) {
     agregarPersona(nombre, edad)
     do {
         const nuevoHobbie = prompt('Ingrese hobbie:')
-        if (nuevoHobbie !== '' && nuevoHobbie !== null){
-        agregarHobbie(persona, nuevoHobbie)
+        if (nuevoHobbie !== '' && nuevoHobbie !== null) {
+            agregarHobbie(persona, nuevoHobbie)
         } else {
             alert('Ingrese hobbies válidos')
         }
     } while (confirm('Desea seguir agregando hobbies?'))
 
-    mostrarHobbies()
+    mostrarHobbies(persona)
 } else {
     alert('Ingrese nombre y/o edad válidos')
 }
