@@ -32,6 +32,7 @@ function mostrarDatos(alumno) {
 }
 
 function clasificarAlumno(alumno) {
+    // ... spread operator se usa con arrays
     const notaMaxima = Math.max(...alumno.calificacion);
     console.log("La nota más alta es:", notaMaxima);
     document.writeln(`<p>La nota más alta es: ${notaMaxima}</p>`)
@@ -55,6 +56,8 @@ function clasificarAlumno(alumno) {
             document.writeln('Datos insuficientes')
             break;
     }
+
+  
 }
 
 // ingreso de alumnos
