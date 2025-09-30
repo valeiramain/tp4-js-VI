@@ -18,14 +18,106 @@ class Persona {
     #peso;
     #altura;
     #anioNac
-    constructor(nombre,edad,dni,sexo,peso,altura,anioNac){
-        this.#nombre=nombre,
-        this.#edad=edad,
-        this.#dni=dni,
-        this.#sexo=sexo,
-        this.#peso=peso,
-        this.#altura=altura,
-        this.#anioNac
+    constructor(nombre, edad, dni, sexo, peso, altura, anioNac) {
+        this.#nombre = nombre,
+            this.#edad = edad,
+            this.#dni = dni,
+            this.#sexo = sexo,
+            this.#peso = peso,
+            this.#altura = altura,
+            this.#anioNac = anioNac
     }
 
+    // Getters
+    get nombre() {
+        return this.#nombre;
+    }
+
+    get edad() {
+        return this.#edad;
+    }
+
+    get dni() {
+        return this.#dni;
+    }
+
+    get sexo() {
+        return this.#sexo;
+    }
+
+    get peso() {
+        return this.#peso;
+    }
+
+    get altura() {
+        return this.#altura;
+    }
+
+    get anioNac() {
+        return this.#anioNac;
+    }
+
+    // Setters
+    set nombre(nuevoNombre) {
+        this.#nombre = nuevoNombre;
+    }
+
+    set edad(nuevaEdad) {
+        this.#edad = nuevaEdad;
+    }
+
+    set dni(nuevoDni) {
+        this.#dni = nuevoDni;
+    }
+
+    set sexo(nuevoSexo) {
+        this.#sexo = nuevoSexo;
+    }
+
+    set peso(nuevoPeso) {
+        this.#peso = nuevoPeso;
+    }
+
+    set altura(nuevaAltura) {
+        this.#altura = nuevaAltura;
+    }
+
+    set anioNac(nuevoAnio) {
+        this.#anioNac = nuevoAnio;
+    }
+
+    // metodos
+
+    mostrarGeneracion(){
+
+    }
+
+    esMayorDeEdad(){
+        if(this.#edad>=18){
+            document.writeln(`<p>La persona es mayor de edad</p>`)
+        } else{
+            document.writeln(`<p>La persona NO es mayor de edad</p>`)
+        }
+    }
+
+    mostrarDatos(){
+        document.writeln(`<h5>Datos de la Persona</h5>`)
+        document.writeln(`<ul>
+            <li><p>Nombre: ${this.#nombre}</p></li>
+            <li><p>Edad: ${this.#edad}</p></li>
+            <li><p>DNI: ${this.#dni}</p></li>
+            <li><p>Sexo: ${this.#sexo}</p></li>
+            <li><p>Peso: ${this.#peso}</p></li>
+            <li><p>Altura: ${this.#altura}</p></li>
+            <li><p>Año de Nacimiento: ${this.#anioNac}</p></li>
+            </ul>`)
+    }
+
+    generarDNI(){
+    
+    }
 }
+
+const persona1 = new Persona ('Valentina Iramain',53,'22414369','M',53,160,1972)
+persona1.esMayorDeEdad()
+persona1.mostrarDatos()
