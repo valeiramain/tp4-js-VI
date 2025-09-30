@@ -115,7 +115,7 @@ class Persona {
         }
 
         if (generacion!=='' && rasgo !==''){
-            document.writeln(`<p>El Año de nacimiento: ${this.#anioNac}, pertenece a la generación: ${generacion} y su rasgo característico es ${rasgo} </p>`)
+            document.writeln(`<p>El Año de nacimiento: ${this.#anioNac}, pertenece a la generación: "${generacion}" y su rasgo característico es: "${rasgo}" </p>`)
         } 
 
     }
