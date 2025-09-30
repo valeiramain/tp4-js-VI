@@ -88,19 +88,19 @@ class Persona {
 
     // metodos
 
-    mostrarGeneracion(){
+    mostrarGeneracion() {
 
     }
 
-    esMayorDeEdad(){
-        if(this.#edad>=18){
+    esMayorDeEdad() {
+        if (this.#edad >= 18) {
             document.writeln(`<p>La persona es mayor de edad</p>`)
-        } else{
+        } else {
             document.writeln(`<p>La persona NO es mayor de edad</p>`)
         }
     }
 
-    mostrarDatos(){
+    mostrarDatos() {
         document.writeln(`<h5>Datos de la Persona</h5>`)
         document.writeln(`<ul>
             <li><p>Nombre: ${this.#nombre}</p></li>
@@ -113,11 +113,17 @@ class Persona {
             </ul>`)
     }
 
-    generarDNI(){
-    
+    generarDNI() {
+        // Número aleatorio de 8 cifras
+        let numeroAleatorio = Math.floor(10000000 + Math.random() * 90000000);
+        console.log(numeroAleatorio);
+        this.#dni=numeroAleatorio;
+        document.writeln(`<p>Nuevo DNI: ${this.dni}</p>`)
     }
 }
 
-const persona1 = new Persona ('Valentina Iramain',53,'22414369','M',53,160,1972)
+const persona1 = new Persona('Valentina Iramain', 53, '22414369', 'M', 53, 160, 1972)
 persona1.esMayorDeEdad()
 persona1.mostrarDatos()
+persona1.generarDNI()
+console.log(persona1)
