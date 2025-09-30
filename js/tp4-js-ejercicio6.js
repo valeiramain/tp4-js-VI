@@ -4,7 +4,8 @@
 // Autor
 // Número de páginas
 
-// Crear sus respectivos métodos get y set correspondientes para cada propiedad. Crear el método mostrarLibro() para mostrar la información relativa al libro con el siguiente formato:
+// Crear sus respectivos métodos get y set correspondientes para cada propiedad. 
+// Crear el método mostrarLibro() para mostrar la información relativa al libro con el siguiente formato:
 
 // “El libro xxx con ISBN xxx creado por el autor xxx tiene páginas xxx”
 
@@ -17,7 +18,7 @@ class libro {
         this.#isbn = isbn;
         this.#titulo = titulo;
         this.#autor = autor;
-        this.#nroPaginas
+        this.#nroPaginas = nroPaginas
     }
     // Getters
     get isbn() {
@@ -52,4 +53,12 @@ class libro {
     set nroPaginas(nuevoNroPaginas) {
         this.#nroPaginas = nuevoNroPaginas;
     }
+
+    //metodo
+    mostrarLibro(){
+        document.writeln(`<p>El libro "${this.#titulo}", con ISBN ${this.#isbn}, creado por el autor ${this.#autor}, tiene páginas ${this.#nroPaginas}<p>`)
+    }
 }
+
+const libro1 = new libro('978-0307474728','Cien años de soledad','Gabriel García Márquez',417)
+libro1.mostrarLibro()
