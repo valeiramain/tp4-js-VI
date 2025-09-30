@@ -89,6 +89,34 @@ class Persona {
     // metodos
 
     mostrarGeneracion() {
+        let generacion = ''
+        let rasgo = ''
+        if (this.#anioNac >= 1994 && this.#anioNac <= 2010) {
+            generacion = 'Generación Z'
+            rasgo = 'Irreverencia'
+        }
+
+        if (this.#anioNac >= 1981 && this.#anioNac <= 1993) {
+            generacion = 'Generación Y'
+            rasgo = 'Frustración'
+        }
+
+        if (this.#anioNac >= 1969 && this.#anioNac <= 1980) {
+            generacion = 'Generación X'
+            rasgo = 'Obsesión al éxito'
+        }
+        if (this.#anioNac >= 1949 && this.#anioNac <= 1968) {
+            generacion = 'Baby Boomer'
+            rasgo = 'Ambición'
+        }
+        if (this.#anioNac >= 1930 && this.#anioNac <= 1948) {
+            generacion = 'Silent Generation (Los niños de la postguerra)'
+            rasgo = 'Austeridad'
+        }
+
+        if (generacion!=='' && rasgo !==''){
+            document.writeln(`<p>El Año de nacimiento: ${this.#anioNac}, pertenece a la generación: ${generacion} y su rasgo característico es ${rasgo} </p>`)
+        } 
 
     }
 
@@ -117,12 +145,13 @@ class Persona {
         // Número aleatorio de 8 cifras
         let numeroAleatorio = Math.floor(10000000 + Math.random() * 90000000);
         console.log(numeroAleatorio);
-        this.#dni=numeroAleatorio;
+        this.#dni = numeroAleatorio;
         document.writeln(`<p>Nuevo DNI: ${this.dni}</p>`)
     }
 }
 
 const persona1 = new Persona('Valentina Iramain', 53, '22414369', 'M', 53, 160, 1972)
+persona1.mostrarGeneracion()
 persona1.esMayorDeEdad()
 persona1.mostrarDatos()
 persona1.generarDNI()
