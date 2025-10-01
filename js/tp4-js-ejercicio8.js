@@ -49,4 +49,18 @@ class Persona{
         }
     }
 
+//metodos
+    saludar(){
+        alert(`Hola! Cómo estas? 👋, Mi nombre es ${this.#nombre}, tengo ${this.#edad} años y soy ${this.#profesion}`)
+    }
+
+    despedirse(){
+        alert(`Adios, Hasta pronto! 🖐️, Mi nombre es ${this.#nombre}, tengo ${this.#edad} años y soy ${this.#profesion}`)
+    }
 }
+
+
+const persona1 = new Persona('Juan Perez',25,'contador')
+persona1.saludar()
+const persona2 = new Persona('María Gonzalez',35,'actriz')
+persona2.despedirse()
