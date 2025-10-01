@@ -159,7 +159,17 @@ class Agenda {
         }
     }
 
-    agendaLlena() { }
+    agendaLlena() {
+        if (this.#contactos.length === this.#capacidad) {
+            alert('AGENDA LLENA!: La agenda no puede almacenar más contactos')
+            console.log('AGENDA LLENA!: La agenda no puede almacenar más contactos')
+            document.writeln(`<p>AGENDA LLENA!: La agenda no puede almacenar más contactos</p>`)
+        } else {
+            alert(`LA AGENDA NO ESTÁ LLENA. Quedan ${this.#capacidad - this.#contactos.length} lugar(es) disponible(s)`)
+            console.log(`LA AGENDA NO ESTÁ LLENA. Quedan ${this.#capacidad - this.#contactos.length} lugare(s) disponible(s)`)
+            document.writeln(`<p>LA AGENDA NO ESTÁ LLENA. Quedan ${this.#capacidad - this.#contactos.length} lugar(es) disponible(s)</p>`)
+        }
+    }
 
     huecosLibres() { }
 }
@@ -225,17 +235,11 @@ if (!isNaN(capacidadAgenda)) {
                 break;
             case 6:
                 //  6- Agenda Llena
-                if (agendaNueva.contactos.length === agendaNueva.capacidad) {
-                    alert('AGENDA LLENA!: La agenda no puede almacenar más contactos')
-                    console.log('AGENDA LLENA!: La agenda no puede almacenar más contactos')
-                    document.writeln(`<p>AGENDA LLENA!: La agenda no puede almacenar más contactos</p>`)
-                }else{
-                    alert(`LA AGENDA NO ESTÁ LLENA. Quedan ${agendaNueva.capacidad-agendaNueva.contactos.length} lugar(es) disponible(s)`)
-                    console.log(`LA AGENDA NO ESTÁ LLENA. Quedan ${agendaNueva.capacidad-agendaNueva.contactos.length} lugare(s) disponible(s)`)
-                    document.writeln(`<p>LA AGENDA NO ESTÁ LLENA. Quedan ${agendaNueva.capacidad-agendaNueva.contactos.length} lugar(es) disponible(s)</p>`)
-                }
+                agendaNueva.agendaLlena()
+
                 break;
             case 7:
+                // 7- Huecos Libres
                 break;
         }
     } while (confirm(`Desea continuar realizando operaciones?`))
