@@ -79,10 +79,10 @@ class Agenda {
         this.#contactos.push(contacto)
     }
 
-    existeContacto(nombreBuscado) {
+    existeContacto(contactoExistente) {
         console.log('en existe contacto')
         const existe = this.#contactos.some(contacto =>
-            contacto.nombre.toLowerCase() === nombreBuscado.toLowerCase()
+            contacto.nombre.toLowerCase() === contactoExistente.toLowerCase()
         );
         if (existe) {
             console.log('El contacto sí existe en la Agenda')
@@ -120,9 +120,26 @@ class Agenda {
         }
     }
 
+    buscarContacto(nombreBuscado) {
+        console.log('en buscar contacto')
+        const resultado = this.#contactos.find(contacto =>
+            contacto.nombre.toLowerCase() === nombreBuscado.toLowerCase()
+        );
+        console.log('Contacto buscado:')
+        console.log(resultado)
+        if (resultado) {
+            document.writeln(`<h4>Contacto Buscado:</h4>`)
+            document.writeln(`<p>Nombre:  ${resultado.nombre}</p>`)
+            document.writeln(`<p>Teléfono: ${resultado.telefono}</p>`)
 
+            console.log('El contacto sí se encontró en la Agenda')
+            alert(`El contacto sí se encontró en la Agenda`)
+        } else {
+            console.log('El contacto No se encuentra en la Agenda')
+            alert('El contacto No se encuentra en la Agenda')
 
-    buscarContacto(nombre) { }
+        }
+    }
 
     eliminarContacto(Contacto) { }
 
@@ -167,9 +184,9 @@ if (!isNaN(capacidadAgenda)) {
                 break;
             case 2:
                 //2- Existe Contacto
-                const contactoBuscado = prompt('Ingrese Contacto a Buscar:').toUpperCase().trim()
-                if (contactoBuscado !== '' && contactoBuscado !== null) {
-                    agendaNueva.existeContacto(contactoBuscado)
+                const contactoExistente = prompt('Ingrese Contacto que sea saber si existe:').toUpperCase().trim()
+                if (contactoExistente !== '' && contactoExistente !== null) {
+                    agendaNueva.existeContacto(contactoExistente)
                 }
                 break;
             case 3:
@@ -177,6 +194,11 @@ if (!isNaN(capacidadAgenda)) {
                 agendaNueva.listarContactos()
                 break;
             case 4:
+                // 4- Buscar Contacto
+                const contactoBuscado = prompt('Ingrese Contacto a Buscar:').toUpperCase().trim()
+                if (contactoBuscado !== '' && contactoBuscado !== null) {
+                    agendaNueva.buscarContacto(contactoBuscado)
+                }
                 break;
             case 5:
                 break;
