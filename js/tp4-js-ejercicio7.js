@@ -141,7 +141,23 @@ class Agenda {
         }
     }
 
-    eliminarContacto(Contacto) { }
+    eliminarContacto(contactoAEliminar) {
+        const index = this.#contactos.findIndex(
+            contacto => contacto.nombre.toLowerCase() === contactoAEliminar.toLowerCase()
+        );
+
+        if (index !== -1) {
+            this.#contactos.splice(index, 1);
+            console.log(`Contacto ${contactoAEliminar} eliminado`);
+            console.log(this.#contactos)
+            alert(`Contacto ${contactoAEliminar} eliminado`);
+            document.writeln(`Contacto ${contactoAEliminar} eliminado`);
+        } else {
+            console.log(`Contacto ${contactoAEliminar} no encontrado`);
+            alert(`Contacto ${contactoAEliminar} no encontrado`);
+            document.writeln(`Contacto ${contactoAEliminar} no encontrado`);
+        }
+    }
 
     agendaLlena() { }
 
@@ -201,6 +217,11 @@ if (!isNaN(capacidadAgenda)) {
                 }
                 break;
             case 5:
+                // 5- Eliminar contacto
+                const contactoAEliminar = prompt('Ingrese Contacto a Eliminar:').toUpperCase().trim()
+                if (contactoAEliminar !== '' && contactoAEliminar !== null) {
+                    agendaNueva.eliminarContacto(contactoAEliminar)
+                }
                 break;
             case 6:
                 break;
