@@ -47,7 +47,7 @@ class Aeropuerto {
     }
 
     buscarAvion(avionBuscado) {
-        console.log('en buscar contacto')
+        console.log('en buscar avion')
         const resultado = this.#listaAviones.find(avion =>
             avion.nombre.toLowerCase() === avionBuscado.toLowerCase()
         );
@@ -128,7 +128,15 @@ class Avion {
     }
 
     // Métodos
-    abordar() { }
+    abordar(nuevoPasajero) {
+        console.log('en abordar')
+        if (this.#capacidad > this.#listaPasajeros.length) {
+            this.#listaPasajeros.push(nuevoPasajero)
+        } else {
+            alert('El avion está completo. No puede Abordar pasajeros')
+        }
+        console.log(avion1)
+    }
 
 }
 
@@ -147,4 +155,19 @@ console.log(avion3)
 console.log(aeropuertoInternacional)
 
 aeropuertoInternacional.buscarAvion('Airbus A320')
-aeropuertoInternacional.buscarAvion('Airbus')
+// aeropuertoInternacional.buscarAvion('Airbus')
+
+
+//abordar avion1
+do {
+    if (avion1.listaPasajeros.length < avion1.capacidad) {
+        const nombrePasajero = prompt('Ingrese nombre del Pasajero:').toUpperCase().trim()
+
+        if (nombrePasajero !== '' && nombrePasajero !== null) {
+            avion1.abordar(nombrePasajero)
+        }
+    } else {
+        alert('El avión está completo. No puede abordar pasajeros')
+    }
+
+} while (confirm('Desea seguir agregando pasajeros?'))
