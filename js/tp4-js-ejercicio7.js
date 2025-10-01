@@ -171,7 +171,11 @@ class Agenda {
         }
     }
 
-    huecosLibres() { }
+    huecosLibres() {
+        alert(`Quedan ${this.#capacidad - this.#contactos.length} lugar(es) disponible(s)`)
+        console.log(`Quedan ${this.#capacidad - this.#contactos.length} lugare(s) disponible(s)`)
+        document.writeln(`<p>Quedan ${this.#capacidad - this.#contactos.length} lugar(es) disponible(s)</p>`)
+    }
 }
 
 
@@ -240,6 +244,7 @@ if (!isNaN(capacidadAgenda)) {
                 break;
             case 7:
                 // 7- Huecos Libres
+                agendaNueva.huecosLibres()
                 break;
         }
     } while (confirm(`Desea continuar realizando operaciones?`))
