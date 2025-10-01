@@ -9,7 +9,7 @@
 
 // “El libro xxx con ISBN xxx creado por el autor xxx tiene páginas xxx”
 
-class libro {
+class Libro {
     #isbn
     #titulo
     #autor
@@ -60,5 +60,5 @@ class libro {
     }
 }
 
-const libro1 = new libro('978-0307474728','Cien años de soledad','Gabriel García Márquez',417)
+const libro1 = new Libro('978-0307474728','Cien años de soledad','Gabriel García Márquez',417)
 libro1.mostrarLibro()
