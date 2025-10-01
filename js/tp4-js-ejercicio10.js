@@ -60,11 +60,41 @@ class Aeropuerto {
             document.writeln(`<p>Destino: ${resultado.destino}</p>`)
 
             console.log('Avión encontrado')
+            alert('Avión encontrado')
 
         } else {
             console.log('Avión No encontrado')
             alert('Avión No encontrado')
 
+        }
+    }
+
+
+    listarAviones() {
+        if (this.#listaAviones.length > 0) {
+            document.writeln(`<h4>Lista de Aviones</h4>`)
+            document.writeln(`<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Capacidad</th>
+            <th scope="col">Destino</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>`)
+            for (let i = 0; i < this.#listaAviones.length; i++) {
+                document.writeln(`<th scope="row">${i + 1}</th>
+                <td>${this.#listaAviones[i].nombre}</td>
+                <td>${this.#listaAviones[i].capacidad}</td>
+                <td>${this.#listaAviones[i].destino}</td>`)
+                document.writeln(`</tr>`)
+            }
+            document.writeln(`</tbody>
+    </table>`)
+        } else {
+            alert('No existen Aviones para listar')
         }
     }
 }
@@ -130,44 +160,75 @@ class Avion {
     // Métodos
     abordar(nuevoPasajero) {
         console.log('en abordar')
+        console.log(nuevoPasajero)
         if (this.#capacidad > this.#listaPasajeros.length) {
             this.#listaPasajeros.push(nuevoPasajero)
+
+            document.writeln(`El pasajero ${nuevoPasajero} abordó el avión ${this.#nombre} con destino a ${this.#destino}`)
+            alert(`El pasajero ${nuevoPasajero} abordó el avión ${this.#nombre} con destino a ${this.#destino}`)
         } else {
             alert('El avion está completo. No puede Abordar pasajeros')
         }
-        console.log(avion1)
     }
 
 }
 
-const aeropuertoInternacional = new Aeropuerto('Ministro Pistarini')
-console.log(aeropuertoInternacional)
 
-const avion1 = new Avion('Boeing 737', 180, 'Madrid')
-aeropuertoInternacional.agregarAvion(avion1)
-console.log(avion1)
-const avion2 = new Avion('Airbus A320', 150, 'Barcelona')
-aeropuertoInternacional.agregarAvion(avion2)
-console.log(avion2)
-const avion3 = new Avion('Embraer E190', 110, 'Roma')
-aeropuertoInternacional.agregarAvion(avion3)
-console.log(avion3)
-console.log(aeropuertoInternacional)
+const aeropuerto = new Aeropuerto('Aeropuerto Internacional')
+console.log(aeropuerto)
 
-aeropuertoInternacional.buscarAvion('Airbus A320')
-// aeropuertoInternacional.buscarAvion('Airbus')
-
-
-//abordar avion1
 do {
-    if (avion1.listaPasajeros.length < avion1.capacidad) {
-        const nombrePasajero = prompt('Ingrese nombre del Pasajero:').toUpperCase().trim()
+    const opcion = parseInt(prompt(`Selecciona una opción:
+    1- Agregar Avión,
+    2- Buscar Avión,
+    3- Abordar Avión,
+    4- Listar Aviones`))
 
-        if (nombrePasajero !== '' && nombrePasajero !== null) {
-            avion1.abordar(nombrePasajero)
-        }
-    } else {
-        alert('El avión está completo. No puede abordar pasajeros')
+    switch (opcion) {
+        case 1:
+            // 1- Agregar Avión
+            const nombreAvion = prompt('Ingrese Nombre del Avión: ').toUpperCase().trim()
+            const capacidadAvion = parseInt(prompt('Ingrese capacidad del Avión: '))
+            const destinoAvion = prompt('Ingrese destino del Avión: ').toUpperCase().trim()
+
+            const avion = new Avion(nombreAvion, capacidadAvion, destinoAvion)
+
+            aeropuerto.agregarAvion(avion)
+            break;
+
+        case 2:
+            // 2- Buscar Avión,
+            const avionBuscado = prompt('Ingrese nombre del Avion a buscar: ').toUpperCase().trim()
+            aeropuerto.buscarAvion(avionBuscado)
+            break;
+
+        case 3:
+            // 3- Abordar Pasajeros
+            const avionAAbordar = prompt('Ingrese nombre avión a a bordar: ').toUpperCase().trim()
+            // buscar si existe el avion
+            const resultado = aeropuerto.listaAviones.find(avion =>
+                avion.nombre.toLowerCase() === avionAAbordar.toLowerCase()
+            );
+
+            if (resultado) {
+                console.log('exist avion para abordar')
+                console.log(resultado)
+                
+                if (resultado.listaPasajeros.length < resultado.capacidad) {
+                    const nombrePasajero = prompt('Ingrese nombre del Pasajero: ').toUpperCase().trim()
+
+                    if (nombrePasajero !== '' && nombrePasajero !== null) {
+                        console.log('llama a metodo abordar')
+                        resultado.abordar(nombrePasajero)
+                    }
+                } else {
+                    alert('El avión está completo. No puede abordar pasajeros')
+                }
+            }
+            break;
+
+        case 4:
+            aeropuerto.listarAviones()
+            break;
     }
-
-} while (confirm('Desea seguir agregando pasajeros?'))
+} while (confirm('Desea seguir realizando operaciones?'))
